@@ -3,8 +3,6 @@ const Potion = require("../lib/Potion");
 
 jest.mock("../lib/Potion");
 
-console.log(new Potion());
-
 test("create a player object", () => {
   const player = new Player("Dave");
 
@@ -16,4 +14,11 @@ test("create a player object", () => {
   expect(player.inventory).toEqual(
     expect.arrayContaining([expect.any(Object)])
   );
+
+  expect(player.getStats()).toHaveProperty("potions");
+  expect(player.getStats()).toHaveProperty("health");
+  expect(player.getStats()).toHaveProperty("strength");
+  expect(player.getStats()).toHaveProperty("agility");
+
+  expect(player.getInventory()).toEqual(expect.any(Array));
 });
